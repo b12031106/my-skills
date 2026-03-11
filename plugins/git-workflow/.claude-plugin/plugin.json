@@ -1,0 +1,6 @@
+{
+  "name": "git-workflow",
+  "description": "Git workflow automation skills including auto commit & push",
+  "version": "1.0.0",
+  "author": { "name": "Justin Hsu" }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "my-skills",
+  "version": "1.0.0",
+  "description": "Personal Claude Code skills marketplace & CLI",
+  "type": "module",
+  "bin": {
+    "my-skills": "./bin/cli.mjs"
+  },
+  "files": ["bin/", "plugins/", ".claude-plugin/"]
+}

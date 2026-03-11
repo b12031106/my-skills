@@ -1,0 +1,17 @@
+{
+  "name": "my-skills",
+  "owner": { "name": "Justin Hsu" },
+  "metadata": {
+    "description": "Personal Claude Code skills collection"
+  },
+  "plugins": [
+    {
+      "name": "git-workflow",
+      "description": "Git workflow automation skills including auto commit & push",
+      "source": "./plugins/git-workflow",
+      "skills": [
+        "./plugins/git-workflow/skills/commit-and-push"
+      ]
+    }
+  ]
+}
