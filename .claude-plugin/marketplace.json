@@ -10,7 +10,7 @@
       "description": "Git workflow automation skills including auto commit & push",
       "source": "./plugins/git-workflow",
       "skills": [
-        "./plugins/git-workflow/skills/commit-and-push"
+        "./skills/commit-and-push"
       ]
     },
     {
@@ -18,7 +18,7 @@
       "description": "Fetch GitHub PR data, analyze review trends, and generate an interactive dashboard",
       "source": "./plugins/pr-analysis",
       "skills": [
-        "./plugins/pr-analysis/skills/pr-review-dashboard"
+        "./skills/pr-review-dashboard"
       ]
     }
   ]
