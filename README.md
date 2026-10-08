@@ -38,7 +38,7 @@ my-skills remove <name>               # 移除 marketplace 及其 plugins
 
 | Skill | 說明 | 觸發方式 |
 |-------|------|----------|
-| retro-web-port | 原版證據式 Web 移植；起步／中途／收尾、子代理分工、測試存檔局部驗收、最後自然破關及 TODO 交接 | `/retro-games:retro-web-port` |
+| retro-web-port | 原版證據式 Web 移植；自主子代理分工、debug／god mode 局部與通關流程驗收、最後依需求正常遊玩及 TODO 交接 | `/retro-games:retro-web-port` |
 
 Claude Code 安裝與呼叫：
 
@@ -55,6 +55,8 @@ Codex 使用同一份 skill：將 `plugins/retro-games/skills/retro-web-port/` �
 共用流程不依賴單一模型廠商；[跨 agent 適配](plugins/retro-games/skills/retro-web-port/references/agent-compatibility.md) 說明如何使用本地模型與子代理工具。Skill 本身不提供 Goal、背景執行或自動排程。已做格式與檔案結構檢查，Claude Code 實際移植流程尚未驗收。
 
 使用本 skill 推進開發時，已明確授權 agent 自行擔任主控、喚起與派遣子代理，並依分工表選擇模型與思考等級；不必逐次確認。這不包含創建獨立使用者 session 或外部付費／擴權操作。既有安裝需更新 marketplace 與 `retro-games` plugin 才能取得最新規則。
+
+流程通關優先使用隔離的 debug／god mode、鎖血、加強隊員、補資金／物品或調整測試價格，實際觸發勝敗、事件、跨關與結局，避免困在正常難度。直接寫通關旗標不能代替這種驗收。先排除流程障礙，正常數值／難度遊玩最後依需求安排；兩種結果分開記錄。
 
 ## 新增自己的 Skill
 
