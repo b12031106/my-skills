@@ -13,7 +13,7 @@
 - 個人安裝：將完整 skill 目錄放在 `~/.claude/skills/retro-web-port/`，以 `/retro-web-port` 呼叫；專案安裝可放 `.claude/skills/retro-web-port/`。
 - 透過本 repository 的 `retro-games` plugin 安裝時，使用 `/retro-games:retro-web-port`。命名空間只是入口差異，不更改工作方法。
 - 讀取 `CLAUDE.md` 及實際存在的其他專案規範。保留 `TODO.md` 作為專案现況入口，不替換已有規範。
-- 不使用 GPT 預設表強制分派。以實際可用的 `sonnet`／`opus`／`haiku` 等模型對應角色：一般總控與有明確規則的實作使用適當的一般模型；未知逆向、共用狀態與關鍵覆核使用較強模型；簡單資料整理和固定步驟驗證可用較輕量模型。這是分工建議，不是與 GPT 型號的能力等價宣稱。
+- 使用 [分工表的 Claude Code 欄位](orchestration.md)：Sonnet 處理一般總控與局部實作；Opus 處理未知逆向、共用狀態與關鍵覆核；Haiku 處理簡單資料整理和固定步驟核對。採實際可用的模型別名，不使用 GPT 預設強制分派；模型與 effort 的限制及升級規則統一維護在該表。
 - 思考／effort 設定僅用該版本及模型實際支援的選項；不能假設 Codex 的 `medium`／`high` 可逐項直接對應。不能切換時沿用現有設定，記錄限制。
 - 子代理使用可用的委派工具；每次交付明確任務與相關 skill／參考路徑，要求讀取或以宿主支援方式載入。不要假設子代理已繼承主控的對話或 skill。
 - 不假設有 `/goal`，也不把 skill 當作無人值守執行器。依已授權的本地持續執行能力工作；中斷前保留 TODO 與恢復位置，等待使用者接續時明示原因。

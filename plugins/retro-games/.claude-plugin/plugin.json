@@ -1,6 +1,6 @@
 {
   "name": "retro-games",
   "description": "Evidence-driven native Web ports of retro games, with staged validation and coordinated development",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": { "name": "Justin Hsu" }
 }
