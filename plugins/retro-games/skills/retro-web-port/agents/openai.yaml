@@ -1,0 +1,4 @@
+interface:
+  display_name: "老遊戲 Web 移植總控"
+  short_description: "以原版證據推進逆向、分工與局部驗收，適用起步及中途接手的移植專案"
+  default_prompt: "使用 $retro-web-port 接續目前專案，依原版證據自主安排逆向、子代理分工與局部驗收，維護 TODO，最後再做完整遊玩驗收。"

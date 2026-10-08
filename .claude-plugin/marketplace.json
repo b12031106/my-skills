@@ -14,6 +14,14 @@
       ]
     },
     {
+      "name": "retro-games",
+      "description": "Evidence-driven retro game Web porting, subagent coordination and checkpoint-based validation",
+      "source": "./plugins/retro-games",
+      "skills": [
+        "./skills/retro-web-port"
+      ]
+    },
+    {
       "name": "pr-analysis",
       "description": "Fetch GitHub PR data, analyze review trends, and generate an interactive dashboard",
       "source": "./plugins/pr-analysis",

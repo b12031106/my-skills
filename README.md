@@ -34,6 +34,26 @@ my-skills remove <name>               # 移除 marketplace 及其 plugins
 |-------|------|----------|
 | commit-and-push | 自動 commit 所有變更並推送到 remote | 「幫我 commit」、「push my changes」、「推上去」 |
 
+### retro-games
+
+| Skill | 說明 | 觸發方式 |
+|-------|------|----------|
+| retro-web-port | 原版證據式 Web 移植；起步／中途／收尾、子代理分工、測試存檔局部驗收、最後自然破關及 TODO 交接 | `/retro-games:retro-web-port` |
+
+Claude Code 安裝與呼叫：
+
+```text
+/plugin marketplace add b12031106/my-skills
+/plugin install retro-games@my-skills
+/retro-games:retro-web-port 接續目前專案，自主推進原版遊戲的 Web 移植加強版。
+```
+
+已加入 marketplace 的使用者可先用 `/plugin marketplace update my-skills` 更新清單。不要為此安裝其他不需要的 plugins。
+
+Codex 使用同一份 skill：將 `plugins/retro-games/skills/retro-web-port/` 完整目錄放入自己的 skills 目錄（通常是 `~/.codex/skills/retro-web-port/`），再以 `$retro-web-port` 呼叫。Claude Code 個人 skill 安裝則放入 `~/.claude/skills/retro-web-port/`，以 `/retro-web-port` 呼叫。
+
+共用流程不依賴單一模型廠商；[跨 agent 適配](plugins/retro-games/skills/retro-web-port/references/agent-compatibility.md) 說明如何使用本地模型與子代理工具。Skill 本身不提供 Goal、背景執行或自動排程。已做格式與檔案結構檢查，Claude Code 實際移植流程尚未驗收。
+
 ## 新增自己的 Skill
 
 1. 在 `plugins/` 下建立 plugin 目錄：
