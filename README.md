@@ -54,6 +54,8 @@ Codex 使用同一份 skill：將 `plugins/retro-games/skills/retro-web-port/` �
 
 共用流程不依賴單一模型廠商；[跨 agent 適配](plugins/retro-games/skills/retro-web-port/references/agent-compatibility.md) 說明如何使用本地模型與子代理工具。Skill 本身不提供 Goal、背景執行或自動排程。已做格式與檔案結構檢查，Claude Code 實際移植流程尚未驗收。
 
+使用本 skill 推進開發時，已明確授權 agent 自行擔任主控、喚起與派遣子代理，並依分工表選擇模型與思考等級；不必逐次確認。這不包含創建獨立使用者 session 或外部付費／擴權操作。既有安裝需更新 marketplace 與 `retro-games` plugin 才能取得最新規則。
+
 ## 新增自己的 Skill
 
 1. 在 `plugins/` 下建立 plugin 目錄：
