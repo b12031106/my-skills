@@ -58,6 +58,8 @@ Codex 使用同一份 skill：將 `plugins/retro-games/skills/retro-web-port/` �
 
 流程通關優先使用隔離的 debug／god mode、鎖血、加強隊員、補資金／物品或調整測試價格，實際觸發勝敗、事件、跨關與結局，避免困在正常難度。直接寫通關旗標不能代替這種驗收。先排除流程障礙，正常數值／難度遊玩最後依需求安排；兩種結果分開記錄。
 
+可獨立驗證的低／中風險子任務先試較省成本模型（Claude：Haiku → Sonnet → Opus；Codex：Luna → Sol → Astra），未知逆向與高影響共用狀態可跳級。主控依真正交付在專案 `docs/MODEL-ROUTING.md` 記錄適用條件與結果，校正後续路由；每次派發明定測試範圍，避免代理自行跑長時間整套驗收。兩家梯度是角色配置，非能力或價格等價保證。
+
 ## 新增自己的 Skill
 
 1. 在 `plugins/` 下建立 plugin 目錄：
