@@ -1,6 +1,6 @@
 # my-skills
 
-Personal Claude Code skills marketplace & CLI.
+Personal agent skills，支援 Claude Code marketplace 與 `npx skills add` 安裝；兩種方式共用 `plugins/*/skills/` 下的同一份內容。
 
 ## 安裝方式
 
@@ -8,9 +8,32 @@ Personal Claude Code skills marketplace & CLI.
 
 ```
 /plugin marketplace add b12031106/my-skills
+/plugin install session-delegate@my-skills
 ```
 
-### 方法二：CLI
+先註冊 marketplace，再選擇要安裝的 plugin；只註冊 marketplace 不會安裝所有 skills。
+已註冊者先執行 `/plugin marketplace update my-skills`；已安裝的 plugin 可用 `/plugin update session-delegate@my-skills` 更新。
+
+### 方法二：npx skills add（Claude Code、Codex 等 agent）
+
+```bash
+# 列出 repo 中可安裝的 skills
+npx skills add b12031106/my-skills --list
+
+# 安裝到目前專案，明確選擇 skill 與 agent
+npx skills add b12031106/my-skills --skill session-delegate -a claude-code codex
+
+# 加上 -g 可安裝到使用者層，供所有專案使用
+npx skills add b12031106/my-skills --skill session-delegate -a claude-code codex -g
+```
+
+省略 `--skill` 可互動選擇 repo 中其他 skills。`npx skills add` 安裝 skill 本身，
+不會註冊 Claude marketplace 或安裝 plugin 的其他元件；同一 agent 請擇一安裝方式，避免重複載入。
+
+Claude Code marketplace 呼叫名稱是 `/session-delegate:session-delegate`；
+直接安裝 skill 後，Claude Code 用 `/session-delegate`，Codex 用 `$session-delegate`。
+
+### 方法三：既有 my-skills CLI
 
 ```bash
 pnpx my-skills add b12031106/my-skills --all
@@ -27,6 +50,16 @@ my-skills remove <name>               # 移除 marketplace 及其 plugins
 不加 `--all` 時會進入互動選單，讓你選擇要安裝哪些 plugins。
 
 ## 目前收錄的 Skills
+
+### session-delegate
+
+| Skill | 說明 | 觸發方式 |
+|-------|------|----------|
+| [session-delegate](plugins/session-delegate/skills/session-delegate/SKILL.md) | 在 Herdr 開具名 Claude Code／Codex／agy session、派工、收結果，依授權收工 | 「開一個 session 幫我做」、「另開 claude 處理」、「收掉那個 session」 |
+
+執行環境需要可連線的 Herdr server、`herdr`、Python 3、`ps`，以及選定的 agent CLI。
+Skill 保留原本的 `--dangerously-*` 啟動方式；只派明確授權的任務。
+安裝不會啟動子 session 或安裝這些執行工具。既有驗證範圍見 [驗證紀錄](plugins/session-delegate/skills/session-delegate/references/verification.md)。
 
 ### git-workflow
 
@@ -50,7 +83,7 @@ Claude Code 安裝與呼叫：
 
 已加入 marketplace 的使用者可先用 `/plugin marketplace update my-skills` 更新清單。不要為此安裝其他不需要的 plugins。
 
-Codex 使用同一份 skill：將 `plugins/retro-games/skills/retro-web-port/` 完整目錄放入自己的 skills 目錄（通常是 `~/.codex/skills/retro-web-port/`），再以 `$retro-web-port` 呼叫。Claude Code 個人 skill 安裝則放入 `~/.claude/skills/retro-web-port/`，以 `/retro-web-port` 呼叫。
+Codex 可用 `npx skills add b12031106/my-skills --skill retro-web-port -a codex` 安裝，再以 `$retro-web-port` 呼叫。Claude Code 個人 skill 則將 agent 改成 `claude-code`，以 `/retro-web-port` 呼叫。
 
 共用流程不依賴單一模型廠商；[跨 agent 適配](plugins/retro-games/skills/retro-web-port/references/agent-compatibility.md) 說明如何使用本地模型與子代理工具。Skill 本身不提供 Goal、背景執行或自動排程。已做格式與檔案結構檢查，Claude Code 實際移植流程尚未驗收。
 
@@ -84,9 +117,30 @@ plugins/<plugin-name>/
 }
 ```
 
-3. 在 `.claude-plugin/marketplace.json` 的 `plugins` 陣列中註冊新 plugin。
+3. 在 `.claude-plugin/marketplace.json` 的 `plugins` 陣列中註冊新 plugin，並列出相對於 plugin 根目錄的 skill 路徑：
 
-4. Push 到 GitHub 後重新安裝即可生效。
+```json
+{
+  "name": "<plugin-name>",
+  "source": "./plugins/<plugin-name>",
+  "skills": ["./skills/<skill-name>"]
+}
+```
+
+`npx skills add` 會讀取這份 manifest，不需要另建一份根目錄 `skills/` 或複製內容。
+Helper 與參考檔都放在各自 skill 目錄內，路徑以 `SKILL.md` 為基準，確保兩種安裝都能帶走完整內容。
+
+4. 驗證 manifest 與 skill 探索：
+
+```bash
+claude plugin validate .
+claude plugin validate ./plugins/<plugin-name>
+npx skills add . --list
+```
+
+5. Push 到 GitHub 後，使用者再從遠端安裝或更新。
+
+格式依據：[Claude marketplace 文件](https://code.claude.com/docs/en/plugin-marketplaces)、[skills CLI 的 manifest 探索規則](https://github.com/vercel-labs/skills/blob/main/docs/creating-skills.md#plugin-manifest-discovery)。
 
 ## License
 

@@ -4,9 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Repo Is
 
-A Claude Code plugin marketplace (`b12031106/my-skills`) that serves two purposes:
+A shared agent skills repository (`b12031106/my-skills`) with three installation paths:
 1. **Marketplace** — installable via `/plugin marketplace add b12031106/my-skills` in Claude Code
-2. **CLI** — `pnpx my-skills` to automate marketplace registration and plugin installation
+2. **Skills CLI** — `npx skills add b12031106/my-skills` for Claude Code, Codex and other agents
+3. **Legacy CLI** — `pnpx my-skills` to automate marketplace registration and plugin installation
 
 ## Architecture
 
@@ -33,6 +34,10 @@ node bin/cli.mjs remove <name>               # Remove marketplace + plugins
 1. Create `plugins/<name>/.claude-plugin/plugin.json` with name, description, version, author
 2. Add skill directories under `plugins/<name>/skills/<skill-name>/SKILL.md`
 3. Register the plugin in `.claude-plugin/marketplace.json` under `plugins` array
+   with `source: "./plugins/<name>"` and `skills: ["./skills/<skill-name>"]`.
+   The skills CLI discovers these manifest paths; keep one canonical copy under the plugin.
+4. Keep helpers and references inside the skill folder; resolve them relative to `SKILL.md`, never to the caller's cwd or a personal checkout.
+5. Validate with `claude plugin validate .`, `claude plugin validate ./plugins/<name>` and `npx skills add . --list`.
 
 ## Conventions
 

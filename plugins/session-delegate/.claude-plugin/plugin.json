@@ -1,0 +1,7 @@
+{
+  "name": "session-delegate",
+  "description": "Delegate tasks to named Claude Code, Codex or agy sessions in Herdr and collect their results",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": { "name": "Justin Hsu" }
+}

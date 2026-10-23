@@ -22,6 +22,14 @@
       ]
     },
     {
+      "name": "session-delegate",
+      "description": "Delegate tasks to named agent sessions in Herdr with verified pane identity and orderly cleanup",
+      "source": "./plugins/session-delegate",
+      "skills": [
+        "./skills/session-delegate"
+      ]
+    },
+    {
       "name": "pr-analysis",
       "description": "Fetch GitHub PR data, analyze review trends, and generate an interactive dashboard",
       "source": "./plugins/pr-analysis",
